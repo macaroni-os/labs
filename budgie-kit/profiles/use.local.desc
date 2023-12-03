@@ -1,0 +1,21 @@
+# This file is deprecated as per GLEP 56 in favor of metadata.xml.
+# Please add your descriptions to your package's metadata.xml ONLY.
+# * generated automatically using pmaint *
+
+dev-libs/appstream:apt - Enables Debians APT support
+dev-libs/appstream:vala - Enable Vala support
+gnome-extra/budgie-control-center:gnome-online-accounts - Enable configuration panel for net-libs/gnome-online-accounts accounts
+gnome-extra/budgie-control-center:ibus - Enable support for enhanced input methods through app-i18n/ibus
+gnome-extra/budgie-desktop:bluetooth - Enable Bluetooth (Vala option)
+gnome-extra/budgie-desktop:gtk-doc - Build gtk-doc documentation
+gnome-extra/budgie-desktop:hibernate - Include support for system hibernation
+gnome-extra/budgie-desktop:policykit - Enable PolKit support
+gnome-extra/budgie-desktop:stateless - Enable stateless XDG paths
+gnome-extra/budgie-desktop-view:stateless - Enable stateless XDG paths
+gnome-extra/budgie-extras:networkmanager - Build network-manager applet
+gnome-extra/budgie-extras:stateless - Enable stateless XDG paths
+gnome-extra/budgie-meta:all-packages - Installs all Budgie applets and applications.
+gnome-extra/budgie-meta:minimal - Installs only the base desktop with minimal applications and base applets.
+gnome-extra/budgie-screensaver:locking - Allow the screen to be locked
+gnome-extra/budgie-screensaver:systemd - Enable systemd integration
+gnome-extra/budgie-screensaver:xtools - Enable support for XFree86 gamma fading

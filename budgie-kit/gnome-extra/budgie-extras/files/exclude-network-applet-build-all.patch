@@ -1,0 +1,11 @@
+--- a/meson.build
++++ b/meson.build
+@@ -227,7 +227,7 @@
+ endif
+ 
+ build_network_manager = get_option('build-network-manager')
+-if build_all == true or build_network_manager == true
++if build_network_manager == true
+ 	subdir('budgie-network-manager')
+ endif
+ 

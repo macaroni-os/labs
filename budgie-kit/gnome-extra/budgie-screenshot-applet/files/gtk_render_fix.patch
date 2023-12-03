@@ -1,0 +1,20 @@
+--- a/src/Widgets/AreaSelectionWindow.vala	2017-08-25 21:05:12.000000000 +0200
++++ b/src/Widgets/AreaSelectionWindow.vala	2021-04-28 01:53:42.854524355 +0200
+@@ -152,8 +152,8 @@
+         style.save();
+         style.add_class(Gtk.STYLE_CLASS_RUBBERBAND);
+ 
+-        Gtk.render_background(style, ctx, 0, 0, w, h);
+-        Gtk.render_frame(style, ctx, 0, 0, w, h);
++        style.render_background(ctx, 0, 0, w, h);
++        style.render_frame(ctx, 0, 0, w, h);
+ 
+         style.restore();
+ 
+@@ -167,4 +167,4 @@
+     }
+ }
+ 
+-} // End namespace
+\ No newline at end of file
++} // End namespace

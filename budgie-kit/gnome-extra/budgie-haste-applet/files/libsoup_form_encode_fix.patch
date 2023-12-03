@@ -1,0 +1,29 @@
+--- a/src/Backend/Providers/GPaste.vala	2017-08-25 20:53:06.000000000 +0200
++++ b/src/Backend/Providers/GPaste.vala	2021-04-27 23:49:27.454810732 +0200
+@@ -34,7 +34,7 @@ private class GPaste : IProvider
+         // One year
+         int expire = (24 * 60 * 60) * 365;
+ 
+-        string fields = Soup.form_encode (
++        string fields = Soup.Form.encode (
+             "data", data.data,
+             "title", title,
+             "language", "text",
+@@ -102,4 +102,4 @@ private class GPaste : IProvider
+     }
+ }
+ 
+-}
+\ No newline at end of file
++}
+--- a/src/Backend/Providers/Pastebin.vala	2021-04-27 23:39:43.584754844 +0200
++++ b/src/Backend/Providers/Pastebin.vala	2021-04-27 23:46:17.973792595 +0200
+@@ -31,7 +31,7 @@ private class Pastebin : IProvider
+ 
+         string url = "https://pastebin.com/api/api_post.php";
+ 
+-        string fields = Soup.form_encode (
++        string fields = Soup.Form.encode (
+             "api_dev_key", "177ebf23f666f85bd607653ab0c87708",
+             "api_option", "paste",
+             "api_paste_code", data.data,

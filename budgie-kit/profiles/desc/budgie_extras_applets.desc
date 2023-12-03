@@ -1,0 +1,32 @@
+# Copyright 2023 Sarah Mia Leibbrand
+# Distributed under the terms of the GNU General Public License v3
+
+# This file contains descriptions of BUDGIE_EXTRAS_APPLETS USE_EXPAND flags
+
+all - Install all the applets inside the Budgie-Extras package
+app-launcher - Applet to provide an alternative means to launch applications
+applications-menu - Stylish Applications Menu
+brightness-controller - Applet to control the brightness of the screen
+clockworks - Applet to display clock across multiple time zones
+countdown - Applet providing a countdown capability
+dropby - Applet to popup when a USB device is connected
+extras-daemon - Extras daemon for budgie-extras capabilities
+fuzzyclock - Show the time in a fuzzy way
+hotcorners - Applet providing hotcorners capabilities
+kangaroo - Applet to allow quick file-browsing
+keyboard-autoswitch - Applet adding the ability to set a different keyboard layout per application
+network-manager - Network Manager Applet
+window-previews - Provides window previews capabilities
+quickchar - GUI to find and choose locale characters
+quicknote - Applet providing simple notes capability
+recently-used - Applet displays files recently accessed
+rotation-lock - Applet to lock or unlock the screen rotation
+showtime - Applet displaying date and time
+take-a-break - Applet to prompt when to take-a-break for a set period of time
+trash - Applet allows access to trash capabilities
+visualspace - Show and manage windows in workspaces
+wallstreet - Change wallpaper from a folder on a schedule
+show-weather - Applet to display the weather and forecast
+window-shuffler - Keyboard and GUI friendly window-tiling capability
+workspace-stopwatch - Workspace usage tracker
+workspace-wallpaper - Applet providing per workspace wallpaper

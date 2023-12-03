@@ -1,0 +1,30 @@
+--- a/data/meson.build	2017-08-25 20:53:06.000000000 +0200
++++ b/data/meson.build	2021-04-30 19:49:32.446414417 +0200
+@@ -7,6 +7,6 @@
+              install_dir: join_paths(datadir, 'glib-2.0' ,'schemas'))
+ 
+ install_data('com.github.cybre.budgie-haste-applet.appdata.xml',
+-             install_dir: join_paths(datadir, 'appdata'))
++             install_dir: join_paths(datadir, 'metainfo'))
+ 
+-meson.add_install_script('meson_post_install.py')
+\ No newline at end of file
++meson.add_install_script('meson_post_install.py')
+--- a/data/com.github.cybre.budgie-haste-applet.appdata.xml	2017-08-25 20:53:06.000000000 +0200
++++ b/data/com.github.cybre.budgie-haste-applet.appdata.xml	2021-04-30 19:50:22.625413130 +0200
+@@ -3,7 +3,7 @@
+   <id>com.github.cybre.budgie-haste-applet</id>
+   <pkgname>budgie-haste-applet</pkgname>
+   <translation type="gettext">budgie-haste-applet</translation>
+-  <metadata_license>CC0-1.0</metadata_license>
++  <metadata_license>GPL-2.0+</metadata_license>
+   <project_license>GPL-2.0+</project_license>
+   <name>Budgie Haste Applet</name>
+   <summary>Post any text, be it code or prose, to various services directly from your desktop</summary>
+@@ -34,4 +34,4 @@
+   <url type="donation">https://paypal.me/StefanRic</url>
+   <developer_name>Stefan Ric</developer_name>
+   <updatecontact>stfric369_AT_gmail.com</updatecontact>
+-</component>
+\ No newline at end of file
++</component>

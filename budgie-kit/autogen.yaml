@@ -1,0 +1,160 @@
+budgie_rule:
+  generator: github-1
+  defaults:
+    cat: gnome-extra
+    github:
+      user: BuddiesOfBudgie
+      query: releases
+  packages:
+    - budgie-analogue-clock-applet:
+        github:
+          user: samlane-ma
+          repo: analogue-clock-applet
+          query: tags
+
+    - budgie-backgrounds:
+        github:
+          repo: budgie-backgrounds
+
+    - budgie-brightness-control-applet:
+        github:
+          user: Azania
+          repo: budgie-brightness-control-applet
+
+    - budgie-calendar-applet:
+        github:
+          user: danielpinto8zz6
+          repo: budgie-calendar-applet
+
+    - budgie-control-center:
+        github:
+          repo: budgie-control-center
+
+    - budgie-desktop:
+        github:
+          repo: budgie-desktop
+
+    - budgie-desktop-view:
+        github:
+          repo: budgie-desktop-view
+
+    - budgie-extras:
+        github:
+          user: UbuntuBudgie
+          repo: budgie-extras
+
+    - budgie-haste-applet:
+        github:
+          user: cybre
+          repo: budgie-haste-applet
+
+    - budgie-pixel-saver-applet:
+        github:
+          user: ilgarmehmetali
+          repo: budgie-pixel-saver-applet
+
+    - budgie-screensaver:
+        github:
+          repo: budgie-screensaver
+
+    - budgie-screenshot-applet:
+        github:
+          repo: budgie-screenshot-applet
+          user: cybre
+
+    - budgie-systemmonitor-applet:
+        github:
+          repo: budgie-systemmonitor-applet
+          user: prateekmedia
+
+budgie_devlibs:
+  generator: github-1
+  defaults:
+    cat: dev-libs
+    github:
+      user: ximion
+      query: releases
+  packages:
+    - appstream:
+        github:
+          repo: appstream
+          query: tags
+
+    - granite:
+        github:
+          user: elementary
+          repo: granite
+
+    # Gnome deps
+    - libhandy:
+        github:
+          user: GNOME
+          repo: libhandy
+          query: tags
+        version: 1.6.4
+
+    - glib:
+        github:
+          user: GNOME
+          repo: glib
+          query: tags
+
+gnome_x11libs:
+  generator: github-1
+  defaults:
+    cat: x11-libs
+    github:
+      user: GNOME
+      query: tags
+  packages:
+    - gtk+:
+        github:
+          repo: gtk
+        versions:
+          3.24.38:
+            template: gtk3.tmpl
+          4.12.1:
+            template: gtk4.tmpl
+    - colord-gtk:
+        github:
+          user: hughsie
+          repo: colord-gtk
+
+budgie_python:
+  defaults:
+    cat: dev-python
+    python_compat: python3+
+  generator: pypi-simple-1
+  packages:
+    - svgwrite:
+        du_pep517: setuptools
+
+    - cssselect2:
+        du_pep517: flit
+        pydeps:
+          py:all:runtime:
+            - tinycss2
+            - webencodings
+
+    - cairosvg:
+        cat: media-gfx
+        du_pep517: setuptools
+        pydeps:
+          py:all:runtime:
+            - cairocffi
+            - cssselect2
+            - defusedxml
+            - tinycss2
+
+budgie_mediagfx:
+  defaults:
+    cat: media-gfx
+    github:
+      query: releases
+  generator: github-1
+  packages:
+    - jhead:
+        github:
+          user: Matthias-Wandel
+          repo: jhead
+

@@ -1,0 +1,15 @@
+--- a/src/Backend/Uploader.vala	2017-08-25 20:53:06.000000000 +0200
++++ b/src/Backend/Uploader.vala	2021-04-28 00:04:35.215897622 +0200
+@@ -88,9 +88,9 @@
+         return upload_in_progress;
+     }
+ 
+-    public unowned GLib.HashTable<string, weak Providers.IProvider> get_providers() {
++    public unowned GLib.HashTable<string, Providers.IProvider> get_providers() {
+         return upload_providers;
+     }
+ }
+ 
+-} // End namespace
+\ No newline at end of file
++} // End namespace

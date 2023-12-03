@@ -1,0 +1,98 @@
+From b79bedec97162db6abc2287bedb643e7413e60bb Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Mon, 4 Mar 2019 01:22:13 +0200
+Subject: [PATCH 3/6] build: Make gnome-online-accounts optional
+
+---
+ meson.build             | 6 +++++-
+ meson_options.txt       | 1 +
+ panels/meson.build      | 5 ++++-
+ shell/cc-panel-loader.c | 4 ++++
+ 4 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index a18c271bd..db6a7d97e 100644
+--- a/meson.build
++++ b/meson.build
+@@ -122,7 +122,7 @@ gio_dep = dependency('gio-2.0')
+ glib_dep = dependency('glib-2.0', version: '>= 2.70.0')
+ gnome_desktop_dep = dependency('gnome-desktop-3.0', version: '>= 3.33.4')
+ gnome_settings_dep = dependency('gnome-settings-daemon', version: '>= 3.27.90')
+-goa_dep = dependency('goa-1.0', version: goa_req_version)
++goa_dep = dependency('goa-1.0', version: goa_req_version, required: get_option('goa'))
+ gsettings_desktop_dep = dependency('gsettings-desktop-schemas', version: '>= 42.alpha')
+ libxml_dep = dependency('libxml-2.0')
+ pulse_dep = dependency('libpulse', version: pulse_req_version)
+@@ -137,6 +137,10 @@ epoxy_dep = dependency('epoxy')
+ 
+ m_dep = cc.find_library('m')
+ 
++enable_goa = goa_dep.found()
++config_h.set('BUILD_GOA', enable_goa,
++             description: 'Define to 1 to build the Online Accounts panel')
++
+ common_deps = [
+   gio_dep,
+   glib_dep,
+diff --git a/meson_options.txt b/meson_options.txt
+index 5c558557d..90f9045c2 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,6 +1,7 @@
+ option('bluetooth', type: 'boolean', value: true, description: 'build with Bluetooth support')
+ option('cheese', type: 'boolean', value: true, description: 'build with cheese webcam support')
+ option('documentation', type: 'boolean', value: false, description: 'build documentation')
++option('goa', type: 'feature', value: 'auto', description: 'build with gnome-online-accounts support')
+ option('ibus', type: 'boolean', value: true, description: 'build with IBus support')
+ option('kerberos', type: 'feature', value: 'auto', description: 'build with kerberos support')
+ option('network_manager', type: 'boolean', value: true, description: 'build with NetworkManager support')
+diff --git a/panels/meson.build b/panels/meson.build
+index d44ad9de1..e04f5e2c9 100644
+--- a/panels/meson.build
++++ b/panels/meson.build
+@@ -17,7 +17,6 @@ panels = [
+   'mouse',
+   'multitasking',
+   'notifications',
+-  'online-accounts',
+   'power',
+   'printers',
+   'region',
+@@ -30,6 +29,10 @@ panels = [
+   'user-accounts',
+ ]
+ 
++if enable_goa
++  panels += ['online-accounts']
++endif
++
+ if enable_network_manager
+   panels += ['network', 'wwan']
+ endif
+diff --git a/shell/cc-panel-loader.c b/shell/cc-panel-loader.c
+index 67f3f1b46..4819f98ad 100644
+--- a/shell/cc-panel-loader.c
++++ b/shell/cc-panel-loader.c
+@@ -49,7 +49,9 @@ extern GType cc_network_panel_get_type (void);
+ extern GType cc_wifi_panel_get_type (void);
+ #endif /* BUILD_NETWORK */
+ extern GType cc_notifications_panel_get_type (void);
++#ifdef BUILD_GOA
+ extern GType cc_goa_panel_get_type (void);
++#endif /* BUILD_GOA */
+ extern GType cc_power_panel_get_type (void);
+ extern GType cc_printers_panel_get_type (void);
+ extern GType cc_region_panel_get_type (void);
+@@ -120,7 +122,9 @@ static CcPanelLoaderVtable default_panels[] =
+   PANEL_TYPE("wifi",             cc_wifi_panel_get_type,                 cc_wifi_panel_static_init_func),
+ #endif
+   PANEL_TYPE("notifications",    cc_notifications_panel_get_type,        NULL),
++#ifdef BUILD_GOA
+   PANEL_TYPE("online-accounts",  cc_goa_panel_get_type,                  NULL),
++#endif
+   PANEL_TYPE("power",            cc_power_panel_get_type,                NULL),
+   PANEL_TYPE("printers",         cc_printers_panel_get_type,             NULL),
+   PANEL_TYPE("region",           cc_region_panel_get_type,               NULL),
+-- 
+2.32.0
+
